@@ -1,4 +1,8 @@
 <script setup>
+import { useMovieStore } from '../stores/MovieStore';
+
+const movieStore = useMovieStore();
+
 const props = defineProps({
   movie: Object,
   required: true,
@@ -17,10 +21,10 @@ const props = defineProps({
     <p class="movie-overview">{{ movie.overview }}</p>
 
     <div class="movie-buttons">
-      <button class="btn movie-buttons-watched">
+      <button class="btn movie-buttons-watched" @click="movieStore.toggleWatched(movie.id)">
         <span>{{ movie.isWatched ? 'Просмотренно' : 'В избранное' }}</span>
       </button>
-      <button class="btn movie-buttons-delete">
+      <button class="btn movie-buttons-delete" @click="movieStore.deleteMovie(movie.id)">
         <span>Удалить</span>
       </button>
     </div>

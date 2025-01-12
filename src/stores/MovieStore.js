@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { defineStore, setActivePinia } from 'pinia';
 
 export const useMovieStore = defineStore('movieStore', {
   state: () => ({
@@ -27,6 +27,18 @@ export const useMovieStore = defineStore('movieStore', {
   getters: {
     watchedVMoveies() {
       return this.movies.filter(itm => itm.isWatched);
+    },
+  },
+  actions: {
+    setActiveTab(id) {
+      this.activeTab = id;
+    },
+    toggleWatched(id) {
+      const indx = this.movies.findIndex(el => el.id === id);
+      this.movies[indx].isWatched = !this.movies[indx].isWatched;
+    },
+    deleteMovie(id) {
+      this.movies = this.movies.filter(el => el.id !== id);
     },
   },
 });

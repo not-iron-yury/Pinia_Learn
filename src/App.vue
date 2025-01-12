@@ -3,6 +3,11 @@ import { useMovieStore } from './stores/MovieStore';
 import Movie from './components/Movie.vue';
 
 const movieStore = useMovieStore();
+
+function handlerClickTabs(id) {
+  // movieStore.activeTab = id;
+  movieStore.setActiveTab(id);
+}
 </script>
 
 <template>
@@ -12,8 +17,10 @@ const movieStore = useMovieStore();
   </header>
   <main>
     <div class="tabs">
-      <button :class="['btn', { btn_green: movieStore.activeTab === 1 }]">Избранное</button>
-      <button :class="['btn', { btn_green: movieStore.activeTab === 2 }]">Поиск</button>
+      <button :class="['btn', { btn_green: movieStore.activeTab === 1 }]" @click="handlerClickTabs(1)">
+        Избранное
+      </button>
+      <button :class="['btn', { btn_green: movieStore.activeTab === 2 }]" @click="handlerClickTabs(2)">Поиск</button>
     </div>
     <div class="movies" v-if="movieStore.activeTab === 1">
       <section>
