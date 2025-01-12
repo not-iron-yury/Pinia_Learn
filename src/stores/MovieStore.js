@@ -24,4 +24,9 @@ export const useMovieStore = defineStore('movieStore', {
     ],
     activeTab: 1,
   }),
+  getters: {
+    watchedVMoveies() {
+      return this.movies.filter(itm => itm.isWatched);
+    },
+  },
 });

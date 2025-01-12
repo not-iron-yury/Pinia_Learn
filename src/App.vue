@@ -16,14 +16,45 @@ const movieStore = useMovieStore();
       <button :class="['btn', { btn_green: movieStore.activeTab === 2 }]">Поиск</button>
     </div>
     <div class="movies" v-if="movieStore.activeTab === 1">
-      <h2>Какой-то список</h2>
-      <Movie v-for="movie of movieStore.movies" :key="movie.id" :movie="movie" />
+      <section>
+        <div class="movies-header">
+          <h2 class="movies-title">Избранное</h2>
+          <span class="movies-count">(всего {{ movieStore.watchedVMoveies.length }} шт.)</span>
+        </div>
+        <Movie v-for="movie of movieStore.watchedVMoveies" :key="movie.id" :movie="movie" />
+      </section>
+      <section>
+        <div class="movies-header">
+          <h2 class="movies-title">Cписок фильмов</h2>
+          <span class="movies-count">(всего {{ movieStore.movies.length }} шт.)</span>
+        </div>
+        <Movie v-for="movie of movieStore.movies" :key="movie.id" :movie="movie" />
+      </section>
     </div>
     <div class="search" v-else-if="movieStore.activeTab === 2">Поиск</div>
   </main>
 </template>
 
 <style lang="css">
+.movies {
+  display: grid;
+  gap: 40px;
+}
+.movies-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.movies-title {
+  font-size: 25px;
+  margin: 0;
+}
+.movies-count {
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+
 .header {
   display: flex;
   justify-content: center;
