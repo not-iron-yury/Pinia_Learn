@@ -1,6 +1,7 @@
 <script setup>
 import { useMovieStore } from './stores/MovieStore';
 import Movie from './components/Movie.vue';
+import Search from './components/Search.vue';
 
 const movieStore = useMovieStore();
 
@@ -38,7 +39,9 @@ function handlerClickTabs(id) {
         <Movie v-for="movie of movieStore.movies" :key="movie.id" :movie="movie" />
       </section>
     </div>
-    <div class="search" v-else-if="movieStore.activeTab === 2">Поиск</div>
+    <div class="search" v-else-if="movieStore.activeTab === 2">
+      <Search />
+    </div>
   </main>
 </template>
 
