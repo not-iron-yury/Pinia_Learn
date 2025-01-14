@@ -4,9 +4,16 @@ import { useMovieStore } from '../stores/MovieStore';
 const movieStore = useMovieStore();
 
 const props = defineProps({
-  movie: Object,
-  required: true,
-  default: () => {},
+  movie: {
+    type: Object,
+    required: true,
+    default: () => {},
+  },
+  isSearch: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 </script>
 
@@ -17,15 +24,20 @@ const props = defineProps({
       :alt="movie.original_title"
       class="movie-img"
     /> -->
-    <div class="movie-name">{{ movie.original_title }}({{ movie.release_date }})</div>
+    <div class="movie-name">{{ movie.original_title }} ({{ movie.release_date }})</div>
     <p class="movie-overview">{{ movie.overview }}</p>
 
-    <div class="movie-buttons">
+    <div class="movie-buttons" v-if="!isSearch">
       <button class="btn movie-buttons-watched" @click="movieStore.toggleWatched(movie.id)">
         <span>{{ movie.isWatched ? 'Просмотренно' : 'В избранное' }}</span>
       </button>
       <button class="btn movie-buttons-delete" @click="movieStore.deleteMovie(movie.id)">
         <span>Удалить</span>
+      </button>
+    </div>
+    <div class="movie-buttons" v-else>
+      <button class="btn movie-buttons-watched">
+        <span>В избранное</span>
       </button>
     </div>
   </article>

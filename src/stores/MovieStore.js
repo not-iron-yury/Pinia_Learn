@@ -4,25 +4,30 @@ export const useMovieStore = defineStore('movieStore', {
   state: () => ({
     movies: [
       {
-        id: 1,
-        original_title: 'Spider-Man',
+        id: 3,
+        original_title: 'Бэтмен навсегда',
         overview:
-          'After being bitten by a genetically altered spider at Oscorp, nerdy but endearing high school student Peter Parker is endowed with amazing powers to become the superhero known as Spider-Man.',
-        poster_path: '/gh4cZbhZxyTbgxQPxD0dOudNPTn.jpg',
-        release_date: '2002-05-01',
+          'В третьем фильме «Бэтмен навсегда» (1995) Китона заменил Вэл Килмер, а режиссёром стал Джоэл Шумахер (Бёртон остался продюсером). Сборы составили 336 млн.',
+        release_date: '1995',
         isWatched: false,
       },
       {
         id: 2,
-        original_title: 'The Batman',
+        original_title: 'Бэтмен возвращается',
+        overview: 'В 1992 году вышел сиквел, где Бэтмена вновь сыграл Китон. Сборы составили 266 миллионов долларов.',
+        release_date: '1992',
+        isWatched: false,
+      },
+      {
+        id: 1,
+        original_title: 'Бэтмен',
         overview:
-          'In his second year of fighting crime, Batman uncovers corruption in Gotham City that connects to his own family while facing a serial killer known as the Riddler.',
-        poster_path: '/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg',
-        release_date: '2022-03-01',
-        isWatched: true,
+          'В 1989 году вышел фильм Бэтмен, снятый Тимом Бёртоном. Роль Бэтмена исполнил Майкл Китон, а роль Джокера — Джек Николсон. Фильм получил восторженные отклики фанатов и критиков, при бюджете в $48 млн он собрал $411 млн в прокате, став самым прибыльным фильмом по комиксам DC, оставаясь таковым до 2008 года.',
+        release_date: '1989',
+        isWatched: false,
       },
     ],
-    activeTab: 1,
+    activeTab: 2,
   }),
   getters: {
     watchedVMoveies() {

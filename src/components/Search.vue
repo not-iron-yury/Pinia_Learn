@@ -5,31 +5,26 @@ import Loader from './Loader.vue';
 import Movie from '../components/Movie.vue';
 
 const searchStore = useSearchStore();
-const searchMovie = ref('');
+//const searchMovie = ref('');
 
 function handleSearch(event) {
   const movieTitle = event.target.elements['search-input'];
-
   if (movieTitle.value) {
-    searchMovie.value = movieTitle.value;
-
-    console.log('Искомый фильм:', searchMovie.value);
-    searchStore.getMovies(searchMovie.value);
-
+    //searchMovie.value = movieTitle.value;
+    searchStore.getMovies(movieTitle.value);
     movieTitle.value = '';
   }
 }
 </script>
 
 <template>
-  <!-- https://www.youtube.com/watch?v=TWIu6JUQqi8 -->
   <section>
     <h2>Поиск</h2>
     <div class="search">
       <form @submit.prevent="handleSearch" class="search-form">
         <label class="search-label"
           >Какой фильм ты хочешь посмотреть?
-          <input id="search-input" class="search-input" type="text" placeholder="Введите название фильма" />
+          <input id="search-input" class="search-input" type="text" placeholder="Введи название фильма" />
         </label>
         <button class="btn search-btn">Найти</button>
       </form>
