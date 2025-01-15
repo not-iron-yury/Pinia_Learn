@@ -2,8 +2,6 @@ import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import { useMovieStore } from './MovieStore';
 
-// const movieStore = useMovieStore();  // тут не работает
-
 const url = 'https://594e11f9a59c6f1d.mokky.dev/movies?original_title';
 
 // ---------- Options API ---------- //
