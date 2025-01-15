@@ -1,7 +1,9 @@
 <script setup>
 import { useMovieStore } from '../stores/MovieStore';
+import { useSearchStore } from '../stores/SearchStore';
 
 const movieStore = useMovieStore();
+const searchStore = useSearchStore();
 
 const props = defineProps({
   movie: {
@@ -36,8 +38,8 @@ const props = defineProps({
       </button>
     </div>
     <div class="movie-buttons" v-else>
-      <button class="btn movie-buttons-watched">
-        <span>В избранное</span>
+      <button class="btn movie-buttons-watched" @click="searchStore.addToUserMovies(movie)">
+        <span>Добавить в список</span>
       </button>
     </div>
   </article>

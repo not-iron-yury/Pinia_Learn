@@ -1,10 +1,14 @@
 import { defineStore } from 'pinia';
+import { useMovieStore } from './MovieStore';
+
+// const movieStore = useMovieStore();  // тут не работает
+
 const url = 'https://594e11f9a59c6f1d.mokky.dev/movies?original_title';
 
 export const useSearchStore = defineStore('searchStore', {
   state: () => ({
     loader: false,
-    movies: () => [],
+    movies: [],
   }),
   actions: {
     async getMovies(search) {
@@ -20,6 +24,11 @@ export const useSearchStore = defineStore('searchStore', {
       } finally {
         this.loader = false;
       }
+    },
+    addToUserMovies(obj) {
+      const movieStore = useMovieStore(); // а тут работает
+      movieStore.movies.push({ ...obj, isWatched: false });
+      movieStore.activeTab = 1;
     },
   },
 });
