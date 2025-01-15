@@ -5,12 +5,10 @@ import Loader from './Loader.vue';
 import Movie from '../components/Movie.vue';
 
 const searchStore = useSearchStore();
-//const searchMovie = ref('');
 
 function handleSearch(event) {
   const movieTitle = event.target.elements['search-input'];
   if (movieTitle.value) {
-    //searchMovie.value = movieTitle.value;
     searchStore.getMovies(movieTitle.value);
     movieTitle.value = '';
   }
